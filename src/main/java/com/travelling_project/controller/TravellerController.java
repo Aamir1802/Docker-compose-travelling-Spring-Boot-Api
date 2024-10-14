@@ -37,34 +37,4 @@ public class TravellerController {
         model.addAttribute("travellers", travellers);
         return "traveller-form"; // Display the travellers in the form
     }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<Traveller> getTravellerById(@PathVariable Long id) {
-        return travellerRepository.findById(id)
-                .map(traveller -> ResponseEntity.ok().body(traveller))
-                .orElse(ResponseEntity.notFound().build());
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<Traveller> updateTraveller(@PathVariable Long id, @RequestBody Traveller travellerDetails) {
-        return travellerRepository.findById(id)
-                .map(traveller -> {
-                    traveller.setName(travellerDetails.getName());
-                    traveller.setDestination(travellerDetails.getDestination());
-                    traveller.setEmail(travellerDetails.getEmail());
-                    Traveller updatedTraveller = travellerRepository.save(traveller);
-                    return ResponseEntity.ok(updatedTraveller);
-                })
-                .orElse(ResponseEntity.notFound().build());
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Object> deleteTraveller(@PathVariable Long id) {
-        return travellerRepository.findById(id)
-                .map(traveller -> {
-                    travellerRepository.delete(traveller);
-                    return ResponseEntity.noContent().build();
-                })
-                .orElse(ResponseEntity.notFound().build());
-    }
 }
