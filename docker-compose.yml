@@ -1,0 +1,31 @@
+version: "3.7"
+services:
+  application:
+    image: spring-boot-mysql-travelling-api    #it should be same when you use Docker Build i.e. Docker build -t spring-boot-mysql-travelling-api .  command
+    ports:
+      - "8080:8080"
+    networks:
+      - springboot-db-net
+    depends_on:
+      - mysqldb
+    volumes:
+      - /data/springboot-app
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/travel_db
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: test
+      SPRING_DATASOURCE_DRIVER-CLASS-NAME: com.mysql.cj.jdbc.Driver
+      SPRING_JPA_HIBERNATE_DDL-AUTO: update
+      SPRING_JPA_SHOW-SQL: true
+
+  mysqldb:
+    image: mysql:5.7    # or mysql:5.7
+    networks:
+      - springboot-db-net
+    environment:
+      - MYSQL_ROOT_PASSWORD=test
+      - MYSQL_DATABASE=travel_db
+    volumes:
+      - /data/mysql
+networks:
+  springboot-db-net:

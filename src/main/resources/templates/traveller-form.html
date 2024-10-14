@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Traveller Form</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+<h1>Add Traveller</h1>
+
+<form action="#" th:action="@{/travellers/api/travellers}" th:object="${traveller}" method="post">
+    <label>Name:</label>
+    <input type="text" th:field="*{name}" required/><br/>
+
+    <label>Destination:</label>
+    <input type="text" th:field="*{destination}" required/><br/>
+
+    <label>Email:</label>
+    <input type="email" th:field="*{email}" required/><br/>
+
+    <input type="submit" value="Submit"/>
+</form>
+
+<h2>All Travellers</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Destination</th>
+        <th>Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="traveller : ${travellers}">
+        <td th:text="${traveller.name}"></td>
+        <td th:text="${traveller.destination}"></td>
+        <td th:text="${traveller.email}"></td>
+    </tr>
+    </tbody>
+</table>
+<h6 class="footer">Created by Aamir
+    </br>+916390500956</h6>
+</body>
+</html>

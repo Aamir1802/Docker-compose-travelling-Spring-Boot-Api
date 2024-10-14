@@ -1,0 +1,109 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+}
+
+h1, h2 {
+    color: #2c3e50;
+    text-align: center; /* Center text */
+}
+
+form {
+    background: rgba(255, 255, 255, 0.9); /* White background with some transparency */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 400px; /* Limit width of the form */
+    position: relative; /* Positioning context for absolute children */
+}
+
+form::before {
+    content: '';
+    background: url('/images/mountains-travel.png') no-repeat center center / cover; /* Background image */
+    position: absolute; /* Positioning it behind the form */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.3; /* Adjust opacity */
+    z-index: 0; /* Ensure it's behind other elements */
+    border-radius: 8px; /* Match form's border radius */
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    position: relative; /* Positioning context for label text */
+    z-index: 1; /* Ensure text is above background */
+}
+
+input[type="text"],
+input[type="email"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    position: relative; /* Positioning context for input fields */
+    z-index: 1; /* Ensure input is above background */
+}
+
+input[type="submit"] {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%; /* Full width for the button */
+    position: relative; /* Positioning context for button */
+    z-index: 1; /* Ensure button is above background */
+}
+
+input[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    max-width: 600px; /* Limit width of the table */
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #3498db;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+.footer {
+    position: fixed; /* Fix position at the bottom */
+    bottom: 20px; /* Distance from the bottom */
+    right: 20px; /* Distance from the right */
+    font-size: 14px; /* Font size */
+    color: #555; /* Text color */
+    z-index: 1; /* Ensure it's above other content */
+}
