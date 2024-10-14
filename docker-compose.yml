@@ -16,16 +16,16 @@ services:
       SPRING_DATASOURCE_PASSWORD: test
       SPRING_DATASOURCE_DRIVER-CLASS-NAME: com.mysql.cj.jdbc.Driver
       SPRING_JPA_HIBERNATE_DDL-AUTO: update
-      SPRING_JPA_SHOW-SQL: true
+      SPRING_JPA_SHOW-SQL: "true"
 
   mysqldb:
-    image: mysql:5.7    # or mysql:5.7
+    image: mysql:latest    # or mysql:5.7
     networks:
       - springboot-db-net
     environment:
       - MYSQL_ROOT_PASSWORD=test
       - MYSQL_DATABASE=travel_db
     volumes:
-      - /data/mysql
+      - ./app:/var/lib/mysql
 networks:
   springboot-db-net:
